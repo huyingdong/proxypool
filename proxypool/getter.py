@@ -13,7 +13,7 @@ class Getter:
         """
         判断是否达到了代理池限制
         """
-        if self.redis.available_count() <= POOL_UPPER_AV_THRESHOLD and self.redis.count() <= POOL_UPPER_THRESHOLD:
+        if self.redis.available_count() <= POOL_UPPER_AV_THRESHOLD or self.redis.count() <= POOL_UPPER_THRESHOLD:
             return True
         else:
             return False

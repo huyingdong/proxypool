@@ -1,16 +1,14 @@
 import os
 import sys
 import requests
-from bs4 import BeautifulSoup
 
 _dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _dir)
 
 
 def get_proxy():
-    r = requests.get('http://127.0.0.1:5000/get')
-    proxy = BeautifulSoup(r.text, "lxml").get_text()
-    return proxy
+    r = requests.get('http://127.0.0.1:5555/random')
+    return r.text
 
 
 def crawl(url, proxy):
