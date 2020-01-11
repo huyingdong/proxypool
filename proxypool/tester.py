@@ -2,6 +2,8 @@ import asyncio
 import aiohttp
 import time
 import sys
+from random import choice
+
 try:
     from aiohttp import ClientError
 except:
@@ -10,7 +12,7 @@ from proxypool.db import RedisClient
 from proxypool.setting import *
 
 
-class Tester(object):
+class Tester:
     def __init__(self):
         self.redis = RedisClient()
     
@@ -27,7 +29,7 @@ class Tester(object):
                     proxy = proxy.decode('utf-8')
                 real_proxy = 'http://' + proxy
                 print('正在测试', proxy)
-                async with session.get(TEST_URL, proxy=real_proxy, timeout=15, allow_redirects=False) as response:
+                async with session.get(choice(TEST_URLs), proxy=real_proxy, timeout=15, allow_redirects=False) as response:
                     if response.status in VALID_STATUS_CODES:
                         self.redis.max(proxy)
                         print('代理可用', proxy)

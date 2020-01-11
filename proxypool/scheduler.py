@@ -6,7 +6,7 @@ from proxypool.tester import Tester
 from proxypool.setting import *
 
 
-class Scheduler():
+class Scheduler:
     def schedule_tester(self, cycle=TESTER_CYCLE):
         """
         定时测试代理
