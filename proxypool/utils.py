@@ -18,7 +18,7 @@ def get_page(url, options={}):
     headers = dict(base_headers, **options)
     print('正在抓取', url)
     try:
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=5)
         print('抓取成功', url, response.status_code)
         if response.status_code == 200:
             return response.text
