@@ -75,19 +75,19 @@ class RedisClient(object):
         print('代理', proxy, '可用，设置为', MAX_SCORE)
         return self.db.zadd(REDIS_KEY, {proxy: MAX_SCORE})
 
-    def total_count(self):
+    def count(self):
         """
         获取总数量
         :return: 数量
         """
-        return self.db.zcount(REDIS_KEY, 1, 5)
+        return self.db.zcount(REDIS_KEY, MIN_SCORE, MAX_SCORE)
 
     def available_count(self):
         """
         获取可用数量
         :return: 数量
         """
-        return self.db.zcount(REDIS_KEY, 5, 5)
+        return self.db.zcount(REDIS_KEY, AVAILABLE_MIN_SCORE, MAX_SCORE)
 
     def all(self):
         """

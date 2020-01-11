@@ -27,18 +27,18 @@ def get_proxy():
     return conn.random()
 
 
-@app.route('/all_counts')
-def get_all_counts():
+@app.route('/count')
+def get_all_count():
     """
     Get the count of proxies
     :return: 代理池总量
     """
     conn = get_conn()
-    return str(conn.total_count())
+    return str(conn.count())
 
 
-@app.route('/available_counts')
-def get_available_counts():
+@app.route('/count_a')
+def get_av_count():
     """
     Get the count of proxies
     :return: 代理池可用量

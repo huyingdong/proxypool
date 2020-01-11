@@ -47,8 +47,8 @@ class Tester:
         """
         print('测试器开始运行')
         try:
-            count = self.redis.available_count()
-            print('当前剩余', count, '个可用代理')
+            count = self.redis.count()
+            print('当前剩余', count, '个代理')
             for i in range(0, count, BATCH_TEST_SIZE):
                 start = i
                 stop = min(i + BATCH_TEST_SIZE, count)
